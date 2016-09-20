@@ -11,9 +11,7 @@ def main
   player1_all = ""
   player2_all = ""
 
-  until game.starting_sticks == 0
-
-
+  until game.starting_sticks <= 0
 
     while !(1..3).include? player1_removal
       puts "How many sticks would player 1 like to remove: "
@@ -34,10 +32,10 @@ def main
       break
     end
 
-
     while !(1..3).include? player2_removal.to_i
       puts "How many sticks would player 2 like to remove: "
       player2_removal = gets.chomp
+      
 
       player2_removal = game.sticks_to_take(player2_removal)
 
@@ -48,11 +46,7 @@ def main
     player2_all << player2_removal
     on_table_sticks = game.remove_sticks(player2_removal)
 
-      puts "Hmmm... #{on_table_sticks} left..."
-
-    if on_table_sticks <= 0
-      break
-    end
+    puts "Hmmm... #{on_table_sticks} left..."
 
   end
 end
